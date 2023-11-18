@@ -1,0 +1,32 @@
+{
+  "responses": [
+    {
+      "question": "What's your name?",
+      "answer": ["Alex"]
+    },
+    {
+      "question": "Choose your interests?",
+      "answer": ["Software Engineering", "AI", "Health Technology"]
+    },
+    {
+      "question": "What classes are you taking?",
+      "answer": [
+        "Machine Learning",
+        "Ethics in CS/DS",
+        "Data Structures and Algorithms"
+      ]
+    },
+    {
+      "question": "What year are you in?",
+      "answer": ["Junior"]
+    },
+    {
+      "question": "Are you looking to connect with a … (mentee, buddy, or mentor)?",
+      "answer": ["Buddy"]
+    },
+    {
+      "question": "What tools are you familiar with?",
+      "answer": ["Python", "JavaScript", "SQL", "Figma"]
+    }
+  ]
+}
