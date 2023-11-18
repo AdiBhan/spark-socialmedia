@@ -4,7 +4,8 @@ import React from "react";
 export function Interests(props: any) {
   return (
     <View>
-      <Text>{props.name}</Text>
+      <Text>{props.route.params.header}</Text>
+      <Text> Yo </Text>
     </View>
   );
 }

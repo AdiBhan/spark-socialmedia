@@ -3,7 +3,8 @@ import { StyleSheet, Text, Image, View, Button } from "react-native";
 import { Login } from "./components/HomePage/Login.tsx";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-// import { Interests } from "./components/HomePage/Interests.tsx";
+import { Interests } from "./components/HomePage/Interests.tsx";
+
 // import {
 //   GoogleSignin,
 //   GoogleSigninButton,
@@ -11,6 +12,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 // } from "@react-native-google-signin/google-signin";
 // const Stack = createNativeStackNavigator();
 // GoogleSignin.configure();
+const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <View style={{ flex: 1 }}>
@@ -21,7 +23,11 @@ export default function App() {
             options={{ headerShown: false }}
             component={Login}
           />
-          <Stack.Screen name="Interests" />
+          <Stack.Screen
+            name="Interests"
+            component={Interests}
+            initialParams={{ header: "hello" }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </View>

@@ -3,32 +3,11 @@ import { Text, Image, View, Button, Pressable } from "react-native";
 import styles from "./LoginStyles.js";
 import { useState } from "react";
 import { Divider } from "@rneui/themed";
-import {
-  GoogleSignin,
-  GoogleSigninButton,
-  statusCodes,
-} from "@react-native-google-signin/google-signin";
 
 export function Login({ navigation }) {
   const [userInfo, setUserInfo] = useState(null);
   // Somewhere in your code
-  const signIn = async () => {
-    try {
-      await GoogleSignin.hasPlayServices();
-      const userInfo = await GoogleSignin.signIn();
-      setUserInfo({ userInfo });
-    } catch (error) {
-      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-        // user cancelled the login flow
-      } else if (error.code === statusCodes.IN_PROGRESS) {
-        // operation (e.g. sign in) is in progress already
-      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-        // play services not available or outdated
-      } else {
-        // some other error happened
-      }
-    }
-  };
+
   return (
     <View style={styles.container}>
       <Image
@@ -43,7 +22,7 @@ export function Login({ navigation }) {
         <Button
           style={styles.button}
           title="Sign in with Google"
-          onPress={signIn}
+          onPress={() => navigation.navigate("Interests")}
         ></Button>
         <Button
           style={styles.button}
