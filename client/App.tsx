@@ -26,7 +26,7 @@ export default function App() {
           <Stack.Screen
             name="Interests"
             component={Interests}
-            initialParams={{ header: "hello" }}
+            initialParams={{ header: "Hi, there what's your name?" }}
           />
         </Stack.Navigator>
       </NavigationContainer>

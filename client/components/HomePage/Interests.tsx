@@ -5,9 +5,15 @@ export function Interests(props: any) {
   return (
     <View>
       <Text>{props.route.params.header}</Text>
-      <Text> Yo </Text>
     </View>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  header: {
+    marginTop: 50,
+    fontSize: 30,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+});
