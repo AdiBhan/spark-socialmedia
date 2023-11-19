@@ -1,56 +1,37 @@
 import { StatusBar } from "expo-status-bar";
-import { Text, Image, View, Button, Pressable, TouchableOpacity } from "react-native";
+import {
+  Text,
+  Image,
+  View,
+  Button,
+  Pressable,
+  TouchableOpacity,
+} from "react-native";
 import styles from "./LoginStyles.js";
 import { useEffect, useState } from "react";
 import { Divider } from "@rneui/themed";
 import auth, { firebase } from "@react-native-firebase/auth";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
-import {
-  API_KEY,
-  APP_ID,
-  AUTH_DOMAIN,
-  MEASUREMENT_ID,
-  MESSAGING_SENDER_ID,
-  PROJECT_ID,
-  STORAGE_BUCKET,
-  DATABASE_URL,
-  WEB_CLIENT_ID,
-} from "@env";
+import { WEB_CLIENT_ID } from "@env";
 
 export function Login({ navigation }) {
   const [signedIn, setSignedIn] = useState(false);
-
-  // const firebaseConfig = {
-  //   apiKey: API_KEY,
-  //   authDomain: AUTH_DOMAIN,
-  //   projectId: PROJECT_ID,
-  //   storageBucket: STORAGE_BUCKET,
-  //   messagingSenderId: MESSAGING_SENDER_ID,
-  //   appId: APP_ID,
-  //   measurementId: MEASUREMENT_ID,
-  //   databaseURL: DATABASE_URL
-  // };
 
   GoogleSignin.configure({
     webClientId: WEB_CLIENT_ID,
   });
 
-  // if (!firebase.apps.length) {
-  //   firebase.initializeApp(firebaseConfig);
-    
-  // }
-
   useEffect(() => {
     // Check the initial user sign-in state
     const subscriber = auth().onAuthStateChanged((user) => {
-      setSignedIn(!!user);
+      const loggedIn = !!user;
+      setSignedIn(loggedIn);
+      if (loggedIn) {
+        navigation.navigate("NamePage");
+      }
     });
     return subscriber; // unsubscribe on unmount
   }, []);
-
-  if (signedIn) {
-    navigation.navigate("NamePage")
-  }
 
   async function onGoogleButtonPress() {
     // Get the users ID token
@@ -74,13 +55,19 @@ export function Login({ navigation }) {
       <Text style={styles.subheader}>Sign in to continue</Text>
       <StatusBar style="auto" />
       <View>
-        <TouchableOpacity style={styles.button_container} onPress={() =>
-          onGoogleButtonPress().then(() =>
-            console.log("Signed in with Google!")
-          ).catch(() => alert("Something went wrong. Please try again."))
-        }>
-        <Text style={styles.buttonText}>Sign in with Google</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button_container}
+          onPress={() =>
+            onGoogleButtonPress()
+              .then(() => {
+                console.log("Signed in with Google!");
+                navigation.navigate("NamePage");
+              })
+              .catch(() => alert("Something went wrong. Please try again."))
+          }
+        >
+          <Text style={styles.buttonText}>Sign in with Google</Text>
+        </TouchableOpacity>
         {/* <Button
           title="Sign in with Github"
           onPress={() => alert("Button pressed")}
