@@ -6,7 +6,6 @@ import { Divider } from "@rneui/themed";
 
 export function Login({ navigation }) {
   const [userInfo, setUserInfo] = useState(null);
-  // Somewhere in your code
 
   return (
     <View style={styles.container}>
@@ -19,16 +18,18 @@ export function Login({ navigation }) {
       <Text style={styles.subheader}>Sign in to continue</Text>
       <StatusBar style="auto" />
       <View style={styles.button_container}>
-        <Button
+        <Pressable
           style={styles.button}
-          title="Sign in with Google"
-          onPress={() => navigation.navigate("Interests")}
-        ></Button>
-        <Button
+          onPress={() => navigation.navigate("NamePage")}
+        >
+          <Text style={styles.buttonText}>Sign in with Google</Text>
+        </Pressable>
+        <Pressable
           style={styles.button}
-          title="Sign in with Github"
           onPress={() => alert("Button pressed")}
-        ></Button>
+        >
+          <Text style={styles.buttonText}>Sign in with Github</Text>
+        </Pressable>
       </View>
     </View>
   );
