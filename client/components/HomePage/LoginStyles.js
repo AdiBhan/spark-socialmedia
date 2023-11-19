@@ -30,8 +30,12 @@ const styles = StyleSheet.create({
     width: "50%",
     marginHorizontal: 5,
     borderRadius: 50,
-    color: "white",
-    backgroundColor: "rgb(75, 165, 150)"
+    backgroundColor: "rgb(75, 165, 150)",
+  },
+  buttonText: {
+    color: 'white', // Set your desired color
+    textAlign: 'center', // Center the text
+    padding: 12
   },
   button: {
     borderRadius: 50,

@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { Text, Image, View, Button, Pressable } from "react-native";
+import { Text, Image, View, Button, Pressable, TouchableOpacity } from "react-native";
 import styles from "./LoginStyles.js";
 import { useEffect, useState } from "react";
 import { Divider } from "@rneui/themed";
@@ -68,15 +68,14 @@ export function Login({ navigation }) {
       <Divider color="black" />
       <Text style={styles.subheader}>Sign in to continue</Text>
       <StatusBar style="auto" />
-      <View style={styles.button_container}>
-        <Button
-          title="Sign in with Google"
-          onPress={() =>
-            onGoogleButtonPress().then(() =>
-              console.log("Signed in with Google!")
-            ).catch(() => console.log("Cancelled."))
-          }
-        ></Button>
+      <View>
+        <TouchableOpacity style={styles.button_container} onPress={() =>
+          onGoogleButtonPress().then(() =>
+            console.log("Signed in with Google!")
+          ).catch(() => console.log("Cancelled."))
+        }>
+        <Text style={styles.buttonText}>Sign in with Google</Text>
+      </TouchableOpacity>
         {/* <Button
           title="Sign in with Github"
           onPress={() => alert("Button pressed")}
