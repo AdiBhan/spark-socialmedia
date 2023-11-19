@@ -1,0 +1,20 @@
+# Spark! Connects
+
+<img style="width:30%; display: block; margin-left: auto; margin-right: auto;" src="imgs/simulator_screenshot_1C320FCC-702E-4420-9320-315BADD8CFF0.png"></img>
+
+## Inspiration 💡
+
+## What it does 🤨
+
+## How we built it 🛠
+
+* Backend:
+* Frontend:
+        
+## Challenges we ran into 🥶
+
+## Accomplishments that we're proud of 🏆
+
+## What we learned 📚
+
+## What's next for Spark! Connects 🔮
