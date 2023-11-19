@@ -20,24 +20,25 @@ import {
 export function Login({ navigation }) {
   const [signedIn, setSignedIn] = useState(false);
 
-  const firebaseConfig = {
-    apiKey: API_KEY,
-    authDomain: AUTH_DOMAIN,
-    projectId: PROJECT_ID,
-    storageBucket: STORAGE_BUCKET,
-    messagingSenderId: MESSAGING_SENDER_ID,
-    appId: APP_ID,
-    measurementId: MEASUREMENT_ID,
-    databaseURL: DATABASE_URL
-  };
-
-  if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-  }
+  // const firebaseConfig = {
+  //   apiKey: API_KEY,
+  //   authDomain: AUTH_DOMAIN,
+  //   projectId: PROJECT_ID,
+  //   storageBucket: STORAGE_BUCKET,
+  //   messagingSenderId: MESSAGING_SENDER_ID,
+  //   appId: APP_ID,
+  //   measurementId: MEASUREMENT_ID,
+  //   databaseURL: DATABASE_URL
+  // };
 
   GoogleSignin.configure({
     webClientId: WEB_CLIENT_ID,
   });
+
+  // if (!firebase.apps.length) {
+  //   firebase.initializeApp(firebaseConfig);
+    
+  // }
 
   useEffect(() => {
     // Check the initial user sign-in state
@@ -76,7 +77,7 @@ export function Login({ navigation }) {
         <TouchableOpacity style={styles.button_container} onPress={() =>
           onGoogleButtonPress().then(() =>
             console.log("Signed in with Google!")
-          ).catch(() => console.log("Cancelled."))
+          ).catch(() => alert("Something went wrong. Please try again."))
         }>
         <Text style={styles.buttonText}>Sign in with Google</Text>
       </TouchableOpacity>

@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: "#e0e0e0",
-    width: "45%",
+    width: "50%",
     paddingVertical: 12,
     borderRadius: 25,
     shadowColor: "#aaa",
@@ -50,11 +50,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 3.84,
     elevation: 4,
-  },
-  buttonText: {
-    textAlign: "center",
-    color: "#333",
-    fontWeight: "bold",
   },
 });
 
