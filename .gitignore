@@ -9,7 +9,7 @@ client/GoogleService-Info.plist
 client/ios
 client/android
 
-__pycache__/
+**/__pycache__/
 *.py[cod]
 *$py.class
 
