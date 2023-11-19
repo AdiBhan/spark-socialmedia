@@ -27,9 +27,11 @@ const styles = StyleSheet.create({
   button_container: {
     flexDirection: "row",
     justifyContent: "space-between",
-    width: "100%",
+    width: "50%",
     marginHorizontal: 5,
     borderRadius: 50,
+    color: "white",
+    backgroundColor: "rgb(75, 165, 150)"
   },
   button: {
     borderRadius: 50,

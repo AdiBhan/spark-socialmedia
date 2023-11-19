@@ -3,35 +3,60 @@ import { Text, Image, View, Button, Pressable } from "react-native";
 import styles from "./LoginStyles.js";
 import { useEffect, useState } from "react";
 import { Divider } from "@rneui/themed";
-import auth from "@react-native-firebase/auth";
+import auth, { firebase } from "@react-native-firebase/auth";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
-import { WEB_CLIENT_ID } from "@env";
+import {
+  API_KEY,
+  APP_ID,
+  AUTH_DOMAIN,
+  MEASUREMENT_ID,
+  MESSAGING_SENDER_ID,
+  PROJECT_ID,
+  STORAGE_BUCKET,
+  DATABASE_URL,
+  WEB_CLIENT_ID,
+} from "@env";
 
 export function Login({ navigation }) {
   const [signedIn, setSignedIn] = useState(false);
 
+  const firebaseConfig = {
+    apiKey: API_KEY,
+    authDomain: AUTH_DOMAIN,
+    projectId: PROJECT_ID,
+    storageBucket: STORAGE_BUCKET,
+    messagingSenderId: MESSAGING_SENDER_ID,
+    appId: APP_ID,
+    measurementId: MEASUREMENT_ID,
+    databaseURL: DATABASE_URL
+  };
+
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+  }
+
   GoogleSignin.configure({
-    webClientId: "668801422697-vhmi604godgqvb0m5pj2lufdiu4p9dof.apps.googleusercontent.com",
+    webClientId: WEB_CLIENT_ID,
   });
 
-  // useEffect(() => {
-  //   // Check the initial user sign-in state
-  //   const subscriber = auth().onAuthStateChanged((user) => {
-  //     setSignedIn(!!user);
-  //   });
-  //   return subscriber; // unsubscribe on unmount
-  // }, []);
+  useEffect(() => {
+    // Check the initial user sign-in state
+    const subscriber = auth().onAuthStateChanged((user) => {
+      setSignedIn(!!user);
+    });
+    return subscriber; // unsubscribe on unmount
+  }, []);
 
-  // async function onGoogleButtonPress() {
-  //   // Get the users ID token
-  //   const { idToken } = await GoogleSignin.signIn();
+  async function onGoogleButtonPress() {
+    // Get the users ID token
+    const { idToken } = await GoogleSignin.signIn();
 
-  //   // Create a Google credential with the token
-  //   const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+    // Create a Google credential with the token
+    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
 
-  //   // Sign-in the user with the credential
-  //   return auth().signInWithCredential(googleCredential);
-  // }
+    // Sign-in the user with the credential
+    return auth().signInWithCredential(googleCredential);
+  }
 
   return (
     <View style={styles.container}>
@@ -47,13 +72,15 @@ export function Login({ navigation }) {
         <Button
           title="Sign in with Google"
           onPress={() =>
-            console.log("test")
+            onGoogleButtonPress().then(() =>
+              console.log("Signed in with Google!")
+            ).catch(() => console.log("Cancelled."))
           }
         ></Button>
-        <Button
+        {/* <Button
           title="Sign in with Github"
           onPress={() => alert("Button pressed")}
-        ></Button>
+        ></Button> */}
       </View>
     </View>
   );
