@@ -1,5 +1,11 @@
 # Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
 # Byte-compiled / optimized / DLL files
+client/google-services.json
+client/GoogleService-Info.plist
+
+client/ios
+client/android
+
 __pycache__/
 *.py[cod]
 *$py.class

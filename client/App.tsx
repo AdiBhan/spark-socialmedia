@@ -1,11 +1,14 @@
-import { Login } from "./components/HomePage/Login.tsx";
+import { Login } from "./components/HomePage/Login";
+import React from "react";
+import { View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Interests } from "./components/HomePage/Interests.tsx";
+import { Interests } from "./components/HomePage/Interests";
 import { useEffect, useState } from "react";
-import { FormPages } from "./data.tsx";
-import { View } from "react-native";
+import { FormPages } from "./data";
+
 const Stack = createNativeStackNavigator();
+
 
 export default function App() {
   {
@@ -60,3 +63,5 @@ export default function App() {
     </View>
   );
 }
+
+
