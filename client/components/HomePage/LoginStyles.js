@@ -29,9 +29,12 @@ const styles = StyleSheet.create({
   },
   button_container: {
     flexDirection: "row",
-    justifyContent: "space-evenly",
-    width: "100%",
-    marginTop: 30,
+    justifyContent: "space-between",
+    width: "50%",
+    marginHorizontal: 5,
+    borderRadius: 50,
+    color: "white",
+    backgroundColor: "rgb(75, 165, 150)"
   },
   button: {
     backgroundColor: "#e0e0e0",
